@@ -1,0 +1,16 @@
+@echo off
+echo Starting Voter Registration Microservices...
+
+echo Initializing database...
+python init_db.py
+
+echo Starting Voter Service on port 8001...
+start "Voter Service" python voter_service.py
+
+echo Starting Stats Service on port 8002...
+start "Stats Service" python stats_service.py
+
+timeout /t 3 /nobreak > nul
+
+echo Starting API Gateway on port 3002...
+python gateway.py

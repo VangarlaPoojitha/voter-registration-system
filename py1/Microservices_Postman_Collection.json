@@ -1,0 +1,152 @@
+{
+  "info": {
+    "name": "Voter Registration Microservices API",
+    "description": "API endpoints for microservices voter registration system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Gateway APIs",
+      "item": [
+        {
+          "name": "Register Voter (Gateway)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"age\": 25,\n  \"phone\": \"1234567890\",\n  \"address\": \"123 Main St, City, State\",\n  \"password\": \"securepassword\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:3002/voters",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "3002",
+              "path": ["voters"]
+            }
+          }
+        },
+        {
+          "name": "Get All Voters (Gateway)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://127.0.0.1:3002/voters",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "3002",
+              "path": ["voters"]
+            }
+          }
+        },
+        {
+          "name": "Search Voters (Gateway)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://127.0.0.1:3002/voters?search=john&page=1&limit=10&sort_by=name",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "3002",
+              "path": ["voters"],
+              "query": [
+                {"key": "search", "value": "john"},
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"},
+                {"key": "sort_by", "value": "name"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Voter (Gateway)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://127.0.0.1:3002/voters/1",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "3002",
+              "path": ["voters", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Statistics (Gateway)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://127.0.0.1:3002/stats",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "3002",
+              "path": ["stats"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Direct Service APIs",
+      "item": [
+        {
+          "name": "Register Voter (Direct)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Smith\",\n  \"email\": \"jane@example.com\",\n  \"age\": 30,\n  \"phone\": \"9876543210\",\n  \"address\": \"456 Oak Ave, City, State\",\n  \"password\": \"mypassword\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8001/register",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8001",
+              "path": ["register"]
+            }
+          }
+        },
+        {
+          "name": "Get Voters (Direct)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://127.0.0.1:8001/voters",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8001",
+              "path": ["voters"]
+            }
+          }
+        },
+        {
+          "name": "Delete Voter (Direct)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://127.0.0.1:8001/voters/1",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8001",
+              "path": ["voters", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Stats (Direct)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://127.0.0.1:8002/stats",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8002",
+              "path": ["stats"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
